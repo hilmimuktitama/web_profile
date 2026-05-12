@@ -560,6 +560,14 @@ h3 {
   padding-top: 36px;
 }
 
+.prose p + p,
+.prose p + ul,
+.prose p + ol,
+.prose ul + p,
+.prose ol + p {
+  margin-top: 1em;
+}
+
 .prose h2,
 .prose h3 {
   margin: 38px 0 10px;
@@ -570,6 +578,11 @@ h3 {
 .prose ul,
 .prose ol {
   color: var(--ink-soft);
+}
+
+.prose ul,
+.prose ol {
+  margin-bottom: 0;
 }
 
 .prose a {

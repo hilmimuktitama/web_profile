@@ -27,9 +27,9 @@ const formattedDate = article.data.pubDate.toLocaleDateString("en", {
   <article class="article-page">
     <header>
       <a href={withBase("/articles/")}>Writing</a>
-      <p class="meta" style="margin-top: 18px;">{formattedDate}</p>
+      <p class="meta">{formattedDate}</p>
       <h1>{article.data.title}</h1>
-      <p class="lede" style="margin-top: 18px;">{article.data.description}</p>
+      <p class="lede">{article.data.description}</p>
     </header>
     <div class="prose">
       <Content />

@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { withBase } from "../../lib/urls";
+
+const now = Date.now();
+
+const articles = (await getCollection("articles"))
+  .filter((article) => article.data.pubDate.valueOf() <= now)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString("en", { day: "2-digit", month: "short", year: "numeric" });
+---
+
+<BaseLayout title="Writing" description="Notes on delivery work, planning, and AI-assisted workflows by Hilmi Muktitama.">
+  <section class="section">
+    <div class="section-heading">
+      <p class="eyebrow">Writing</p>
+      <div>
+        <h1 id="articles-title">Notes from the delivery floor.</h1>
+        <p>Short writing on status, planning, AI-assisted workflows, and what actually helps teams move.</p>
+      </div>
+    </div>
+    <div class="row-list">
+      {articles.map((article) => (
+        <article class="content-row">
+          <p class="meta">{formatDate(article.data.pubDate)}</p>
+          <div>
+            <h2><a href={withBase(`/articles/${article.slug}/`)}>{article.data.title}</a></h2>
+            <p>{article.data.description}</p>
+            <div class="tag-row">
+              {article.data.tags.map((tag) => <span class="tag">{tag}</span>)}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

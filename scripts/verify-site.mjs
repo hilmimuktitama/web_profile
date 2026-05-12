@@ -53,6 +53,7 @@ check(!publicHtml.includes("Private work can be discussed"), "public build shoul
 check(!publicHtml.includes("share-safe"), "public build should not use vague share-safe filler copy");
 check(!publicHtml.includes("work I can talk about"), "public build should not use casual work-disclosure filler copy");
 check(!publicHtml.includes("AI-assisted workflows"), "public build should not use broad AI-positioning filler copy");
+check(!publicHtml.includes("Additional work samples are available on request"), "public build should not use generic work-sample availability filler copy");
 
 check(css.includes(".prose p+p"), "prose paragraphs should have spacing between adjacent paragraphs");
 check(css.includes(".prose ul,.prose ol"), "prose lists should have readable spacing");

@@ -2,7 +2,7 @@
 title: "AI-assisted planning workflow"
 description: "A cleaned-up case note on using AI to draft planning and documentation without losing source checks or human review."
 source: "manual"
-status: "private-case-study"
+status: "draft"
 updatedDate: 2026-05-12
 featured: false
 order: 30

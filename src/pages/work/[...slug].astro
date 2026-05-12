@@ -5,7 +5,7 @@ import { withBase } from "../../lib/urls";
 
 export async function getStaticPaths() {
   const projects = (await getCollection("projects")).filter(
-    (project) => project.data.status !== "draft"
+    (project) => project.data.status === "public"
   );
   return projects.map((project) => ({
     params: { slug: project.slug },
@@ -15,15 +15,14 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { Content } = await render(project);
-const formatProjectStatus = (status: string) =>
-  status === "public" ? "public repo" : "case note";
+const formatProjectStatus = () => "public repo";
 ---
 
 <BaseLayout title={project.data.title} description={project.data.description}>
   <article class="article-page">
     <header>
-      <a href={withBase("/work/")}>Case Studies</a>
-      <p class="meta" style="margin-top: 18px;">{formatProjectStatus(project.data.status)}</p>
+      <a href={withBase("/work/")}>Selected Work</a>
+      <p class="meta" style="margin-top: 18px;">{formatProjectStatus()}</p>
       <h1>{project.data.title}</h1>
       <p class="lede" style="margin-top: 18px;">{project.data.description}</p>
       <div class="link-row" style="margin-top: 22px;">

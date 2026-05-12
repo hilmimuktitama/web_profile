@@ -4,23 +4,22 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { withBase } from "../../lib/urls";
 
 const projects = (await getCollection("projects"))
-  .filter((project) => project.data.status !== "draft")
+  .filter((project) => project.data.status === "public")
   .sort((a, b) => a.data.order - b.data.order);
 
 const formatDate = (date?: Date) =>
   date?.toLocaleDateString("en", { month: "short", year: "numeric" }) ?? "Ready for update";
 
-const formatProjectStatus = (status: string) =>
-  status === "public" ? "public repo" : "case note";
+const formatProjectStatus = () => "public repo";
 ---
 
-<BaseLayout title="Case Studies" description="Public work and cleaned-up case notes for Technical Program Manager work by Hilmi Muktitama.">
+<BaseLayout title="Selected Work" description="Public work and share-safe notes for Technical Program Manager work by Hilmi Muktitama.">
   <section class="section">
     <div class="section-heading">
-      <p class="eyebrow">Case Studies</p>
+      <p class="eyebrow">Selected Work</p>
       <div>
-        <h1>Work I can talk about publicly.</h1>
-        <p>Public projects and cleaned-up case notes from delivery planning, reporting, and AI-assisted workflow work.</p>
+        <h1>Public work I can talk about clearly.</h1>
+        <p>Public projects and share-safe notes from delivery planning, reporting, and workflow work.</p>
       </div>
     </div>
     <div class="row-list">
@@ -29,7 +28,7 @@ const formatProjectStatus = (status: string) =>
           <div>
             <a class="project-title" href={withBase(`/work/${project.slug}/`)}>{project.data.title}</a>
             <div class="tag-row">
-              <span class="tag">{formatProjectStatus(project.data.status)}</span>
+              <span class="tag">{formatProjectStatus()}</span>
               {project.data.language && <span class="tag">{project.data.language}</span>}
             </div>
           </div>

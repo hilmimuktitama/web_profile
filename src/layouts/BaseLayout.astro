@@ -9,7 +9,7 @@ interface Props {
 
 const {
   title = "Hilmi Muktitama",
-  description = "Technical Program Manager helping teams turn messy delivery signals into clear plans, decisions, and leadership updates."
+  description = "Technical Program Manager focused on delivery planning, risk visibility, and clear program updates."
 } = Astro.props;
 
 const pageTitle = title === "Hilmi Muktitama" ? title : `${title} | Hilmi Muktitama`;
@@ -47,7 +47,7 @@ const shareImageUrl = new URL(withBase("/og-image.png"), site).toString();
         <a class="rail-mark" href={withBase("/")} aria-label="Hilmi Muktitama home">HM</a>
         <div class="rail-copy">
           <span>Technical Program Manager</span>
-          <span>Delivery signal, made clearer</span>
+          <span>Delivery planning, made clearer</span>
         </div>
       </aside>
       <div class="site-frame">
@@ -55,7 +55,7 @@ const shareImageUrl = new URL(withBase("/og-image.png"), site).toString();
           <a class="brand" href={withBase("/")} aria-label="Hilmi Muktitama home">Hilmi Muktitama</a>
           <nav class="site-nav" aria-label="Primary navigation">
             <a href={withBase("/resume/")}>Resume</a>
-            <a href={withBase("/#case-studies")}>Case Studies</a>
+            <a href={withBase("/#case-studies")}>Selected Work</a>
             <a href={withBase("/articles/")}>Writing</a>
             <a href={withBase("/#contact")}>Contact</a>
           </nav>
@@ -66,11 +66,11 @@ const shareImageUrl = new URL(withBase("/og-image.png"), site).toString();
         <footer class="site-footer" id="contact">
           <div>
             <p class="footer-title">Contact</p>
-            <p class="muted">Open to Technical Program Manager roles and delivery systems work where clearer status, cleaner planning, and better follow-through matter.</p>
+            <p class="muted">Open to Technical Program Manager roles and delivery systems work where clearer planning, risk visibility, and better follow-through matter.</p>
           </div>
           <div class="footer-links" aria-label="Contact links">
-            <a href="mailto:hilmimukti@gmail.com">hilmimukti@gmail.com</a>
             <a href="https://www.linkedin.com/in/hilmimuktitama/">LinkedIn</a>
+            <a href="https://github.com/hilmimuktitama">GitHub</a>
           </div>
         </footer>
       </div>

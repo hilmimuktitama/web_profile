@@ -1,0 +1,166 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { withBase } from "../lib/urls";
+
+const projects = (await getCollection("projects"))
+  .filter((project) => project.data.status !== "draft")
+  .sort((a, b) => a.data.order - b.data.order);
+const visibleProjects = projects.slice(0, 3);
+
+const now = Date.now();
+
+const articles = (await getCollection("articles"))
+  .filter((article) => article.data.pubDate.valueOf() <= now)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 4);
+
+const resumeEntries = (await getCollection("resume")).sort((a, b) => a.data.order - b.data.order);
+const experience = resumeEntries.filter((entry) => entry.data.section === "experience");
+const skills = resumeEntries.filter((entry) => entry.data.section === "skill");
+const highlightedExperience = experience.slice(0, 2);
+const coreSkill = skills[0];
+
+const formatDate = (date?: Date) =>
+  date?.toLocaleDateString("en", { month: "short", year: "numeric" }) ?? "Ready for update";
+
+const formatProjectStatus = (status: string) =>
+  status === "public" ? "public repo" : "case note";
+---
+
+<BaseLayout>
+  <section class="section hero" aria-labelledby="hero-title">
+    <div class="hero-identity">
+      <h1 id="hero-title">Hilmi Muktitama</h1>
+      <div class="hero-meta" aria-label="Profile metadata">
+        <span>Jakarta / remote-ready</span>
+        <span>TPM portfolio</span>
+        <span>Public notes only</span>
+      </div>
+    </div>
+    <div class="hero-copy">
+      <p class="role-title">Technical Program Manager</p>
+      <p class="lede">
+        I help teams see what is really happening in delivery: the blockers, owners, risks, and decisions that get lost between Jira, Confluence, and status meetings.
+      </p>
+      <div class="link-row" aria-label="Primary profile links">
+        <a class="button-link primary" href="mailto:hilmimukti@gmail.com">Contact</a>
+        <a class="button-link" href={withBase("/resume/")}>Resume</a>
+        <a class="button-link" href="https://www.linkedin.com/in/hilmimuktitama/">LinkedIn</a>
+        <a class="button-link" href="https://github.com/hilmimuktitama">GitHub</a>
+      </div>
+      <aside class="hero-panel" aria-label="Profile operating model">
+        <div>
+          <p class="panel-label">What I make visible</p>
+          <div class="signal-list">
+            <p><span>01</span> What the tickets say versus what the work shows.</p>
+            <p><span>02</span> The owner, date, and next move for each blocker.</p>
+            <p><span>03</span> Updates that leadership can read without a meeting.</p>
+          </div>
+        </div>
+        <div class="signal-strip" aria-label="Operating loop">
+          <span>Source</span>
+          <span>Synthesize</span>
+          <span>Review</span>
+          <span>Report</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="resume" aria-labelledby="resume-title">
+    <div class="section-heading">
+      <p class="eyebrow">Resume</p>
+      <div>
+        <h2 id="resume-title">Technical program execution, written for fast review.</h2>
+        <p>A compact preview of the full resume: 5+ years across technical program management, product management, and QA engineering.</p>
+      </div>
+    </div>
+    <div class="row-list">
+      {highlightedExperience.map((entry) => (
+        <article class="content-row">
+          <p class="meta">{entry.data.period ?? "Selected work"}</p>
+          <div>
+            <h3>{entry.data.title}</h3>
+            {entry.data.organization && <p class="meta">{entry.data.organization}</p>}
+            <p>{entry.data.summary}</p>
+            {entry.data.items.length > 0 && (
+              <div class="tag-row">
+                {entry.data.items.slice(0, 3).map((item) => <span class="tag">{item}</span>)}
+              </div>
+            )}
+          </div>
+        </article>
+      ))}
+      {coreSkill && (
+        <article class="content-row">
+          <p class="meta">Resume</p>
+          <div>
+            <h3>Full work history</h3>
+            <p>The dedicated resume page includes Mekari and Privy experience, education, skills, language, and certifications from the public profile source.</p>
+            <div class="tag-row">
+              {coreSkill.data.items.map((item) => <span class="tag">{item}</span>)}
+            </div>
+            <p class="inline-action"><a href={withBase("/resume/")}>Read full resume</a></p>
+          </div>
+        </article>
+      )}
+    </div>
+  </section>
+
+  <section class="section" id="case-studies" aria-labelledby="case-studies-title">
+    <div class="section-heading">
+      <p class="eyebrow">Case Studies</p>
+      <div>
+        <h2 id="case-studies-title">Selected work on delivery clarity and planning tools.</h2>
+        <p>Short notes on public work and sanitized examples. No internal names, ticket IDs, or sensitive metrics.</p>
+      </div>
+    </div>
+    <div class="row-list">
+      {visibleProjects.map((project) => (
+        <article class={`project-row ${project.data.featured ? "featured" : ""}`}>
+          <div>
+            <a class="project-title" href={project.data.repoUrl ?? withBase(`/work/${project.slug}/`)}>
+              {project.data.title}
+            </a>
+            <div class="tag-row">
+              <span class="tag">{formatProjectStatus(project.data.status)}</span>
+              {project.data.language && <span class="tag">{project.data.language}</span>}
+            </div>
+          </div>
+          <p class="project-desc">{project.data.description}</p>
+          <div class="project-actions">
+            <span class="meta">{formatDate(project.data.updatedDate)}</span>
+            <a href={withBase(`/work/${project.slug}/`)}>Read notes</a>
+          </div>
+        </article>
+      ))}
+    </div>
+    <p class="empty-note">
+      More examples can be shared in conversation when the context is right.
+    </p>
+  </section>
+
+  <section class="section" id="articles" aria-labelledby="articles-title">
+    <div class="section-heading">
+      <p class="eyebrow">Writing</p>
+      <div>
+        <h2 id="articles-title">Notes on program execution and AI-assisted workflows.</h2>
+        <p>Short notes on delivery work, AI-assisted planning, and the habits that keep teams honest.</p>
+      </div>
+    </div>
+    {articles.length > 0 ? (
+      <div class="article-grid">
+        {articles.map((article) => (
+          <a class="article-card" href={withBase(`/articles/${article.slug}/`)}>
+            <p class="meta">{formatDate(article.data.pubDate)}</p>
+            <h3>{article.data.title}</h3>
+            <p>{article.data.description}</p>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <p class="empty-note">Writing will appear here once there is something useful to share.</p>
+    )}
+  </section>
+</BaseLayout>

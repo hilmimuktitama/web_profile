@@ -1,0 +1,45 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { withBase } from "../../lib/urls";
+
+const projects = (await getCollection("projects"))
+  .filter((project) => project.data.status !== "draft")
+  .sort((a, b) => a.data.order - b.data.order);
+
+const formatDate = (date?: Date) =>
+  date?.toLocaleDateString("en", { month: "short", year: "numeric" }) ?? "Ready for update";
+
+const formatProjectStatus = (status: string) =>
+  status === "public" ? "public repo" : "case note";
+---
+
+<BaseLayout title="Case Studies" description="Public work and cleaned-up case notes for Technical Program Manager work by Hilmi Muktitama.">
+  <section class="section">
+    <div class="section-heading">
+      <p class="eyebrow">Case Studies</p>
+      <div>
+        <h1>Work I can talk about publicly.</h1>
+        <p>Public projects and cleaned-up case notes from delivery planning, reporting, and AI-assisted workflow work.</p>
+      </div>
+    </div>
+    <div class="row-list">
+      {projects.map((project) => (
+        <article class={`project-row ${project.data.featured ? "featured" : ""}`}>
+          <div>
+            <a class="project-title" href={withBase(`/work/${project.slug}/`)}>{project.data.title}</a>
+            <div class="tag-row">
+              <span class="tag">{formatProjectStatus(project.data.status)}</span>
+              {project.data.language && <span class="tag">{project.data.language}</span>}
+            </div>
+          </div>
+          <p class="project-desc">{project.data.description}</p>
+          <div class="project-actions">
+            <span class="meta">{formatDate(project.data.updatedDate)}</span>
+            {project.data.repoUrl && <a href={project.data.repoUrl}>Repository</a>}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

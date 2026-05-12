@@ -1,7 +1,19 @@
 # Hilmi Muktitama Web Profile
 
-Production artifact for the static Astro profile site.
+Static Astro profile site for resume, portfolio, GitHub work, and daily articles.
 
-This repository is deployed with GitHub Pages from the checked-in `dist/` artifact.
+## Commands
 
-Production URL: https://hilmimuktitama.github.io/web_profile/
+```bash
+npm install
+npm run dev
+npm run build
+```
+
+## Content
+
+- Add articles in `src/content/articles/`.
+- Add projects or future GitHub repositories in `src/content/projects/`.
+- Update resume content in `src/content/resume/`.
+
+The site has no database, CMS, or server runtime.

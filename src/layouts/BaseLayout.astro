@@ -1,0 +1,62 @@
+---
+import "../styles/global.css";
+import { withBase } from "../lib/urls";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Hilmi Muktitama",
+  description = "Technical Program Manager helping teams turn messy delivery signals into clear plans, decisions, and leadership updates."
+} = Astro.props;
+
+const pageTitle = title === "Hilmi Muktitama" ? title : `${title} | Hilmi Muktitama`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <div class="site-shell">
+      <aside class="identity-rail" aria-label="Profile summary">
+        <a class="rail-mark" href={withBase("/")} aria-label="Hilmi Muktitama home">HM</a>
+        <div class="rail-copy">
+          <span>Technical Program Manager</span>
+          <span>Delivery signal, made clearer</span>
+        </div>
+      </aside>
+      <div class="site-frame">
+        <header class="site-header">
+          <a class="brand" href={withBase("/")} aria-label="Hilmi Muktitama home">Hilmi Muktitama</a>
+          <nav class="site-nav" aria-label="Primary navigation">
+            <a href={withBase("/resume/")}>Resume</a>
+            <a href={withBase("/#case-studies")}>Case Studies</a>
+            <a href={withBase("/articles/")}>Writing</a>
+            <a href={withBase("/#contact")}>Contact</a>
+          </nav>
+        </header>
+        <main>
+          <slot />
+        </main>
+        <footer class="site-footer" id="contact">
+          <div>
+            <p class="footer-title">Contact</p>
+            <p class="muted">Open to Technical Program Manager roles and delivery systems work where clearer status, cleaner planning, and better follow-through matter.</p>
+          </div>
+          <div class="footer-links" aria-label="Contact links">
+            <a href="mailto:hilmimukti@gmail.com">hilmimukti@gmail.com</a>
+            <a href="https://www.linkedin.com/in/hilmimuktitama/">LinkedIn</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>

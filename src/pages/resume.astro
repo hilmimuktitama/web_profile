@@ -1,0 +1,108 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const entries = (await getCollection("resume")).sort((a, b) => a.data.order - b.data.order);
+const experience = entries.filter((entry) => entry.data.section === "experience");
+const skills = entries.filter((entry) => entry.data.section === "skill");
+const education = entries.filter((entry) => entry.data.section === "education");
+const languages = entries.filter((entry) => entry.data.section === "language");
+const certifications = entries.filter((entry) => entry.data.section === "certification");
+---
+
+<BaseLayout
+  title="Resume"
+  description="Resume for Hilmi Muktitama, Senior Technical Program Manager with experience across program management, product management, and QA engineering."
+>
+  <article class="resume-page">
+    <header class="resume-hero">
+      <p class="eyebrow">Resume</p>
+      <div>
+        <h1>Hilmi Muktitama</h1>
+        <p class="role-title">Senior Technical Program Manager</p>
+        <p class="lede">
+          Software professional with 5+ years across technical program management, product management, project management, and QA engineering. Experienced in delivery planning, Scrum team coordination, stakeholder communication, and technical execution in startup environments.
+        </p>
+        <div class="resume-contact" aria-label="Public resume contact links">
+          <a href="mailto:hilmimukti@gmail.com">hilmimukti@gmail.com</a>
+          <a href="https://www.linkedin.com/in/hilmimuktitama/">LinkedIn</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="resume-section" aria-labelledby="experience-title">
+      <div class="resume-section-heading">
+        <p class="eyebrow">Experience</p>
+        <h2 id="experience-title">Work history</h2>
+      </div>
+      <div class="resume-timeline">
+        {experience.map((entry) => (
+          <article class="resume-role">
+            <div class="resume-role-meta">
+              <p>{entry.data.period}</p>
+              {entry.data.location && <p>{entry.data.location}</p>}
+            </div>
+            <div>
+              <h3>{entry.data.title}</h3>
+              {entry.data.organization && <p class="resume-org">{entry.data.organization}</p>}
+              <p>{entry.data.summary}</p>
+              {entry.data.items.length > 0 && (
+                <ul class="resume-bullets">
+                  {entry.data.items.map((item) => <li>{item}</li>)}
+                </ul>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="resume-section resume-grid-section" aria-labelledby="credentials-title">
+      <div class="resume-section-heading">
+        <p class="eyebrow">Credentials</p>
+        <h2 id="credentials-title">Skills, education, language, and certifications</h2>
+      </div>
+      <div class="resume-grid">
+        <section class="resume-card" aria-labelledby="skills-title">
+          <h3 id="skills-title">Top skills</h3>
+          {skills.map((entry) => (
+            <div>
+              <p>{entry.data.summary}</p>
+              <div class="tag-row">
+                {entry.data.items.map((item) => <span class="tag">{item}</span>)}
+              </div>
+            </div>
+          ))}
+        </section>
+
+        <section class="resume-card" aria-labelledby="education-title">
+          <h3 id="education-title">Education</h3>
+          {education.map((entry) => (
+            <div class="credential-item">
+              <p class="credential-title">{entry.data.title}</p>
+              {entry.data.organization && <p>{entry.data.organization}</p>}
+              {entry.data.period && <p class="meta">{entry.data.period}</p>}
+            </div>
+          ))}
+        </section>
+
+        <section class="resume-card" aria-labelledby="language-title">
+          <h3 id="language-title">Language</h3>
+          {languages.map((entry) => (
+            <div class="credential-item">
+              <p class="credential-title">{entry.data.title}</p>
+              <p>{entry.data.summary}</p>
+            </div>
+          ))}
+        </section>
+
+        <section class="resume-card" aria-labelledby="certifications-title">
+          <h3 id="certifications-title">Certifications</h3>
+          <ul class="credential-list">
+            {certifications.map((entry) => <li>{entry.data.title}</li>)}
+          </ul>
+        </section>
+      </div>
+    </section>
+  </article>
+</BaseLayout>

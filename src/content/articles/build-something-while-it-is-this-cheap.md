@@ -3,7 +3,6 @@ title: "Build Something While It Is This Cheap"
 description: "A personal note on why access to AI has made building less optional for anyone with the privilege to use it."
 pubDate: 2026-05-12
 tags:
-  - ai-assisted-workflows
   - building
   - notes
 ---

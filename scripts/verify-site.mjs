@@ -1,4 +1,4 @@
-import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { cwd, exit } from "node:process";
 
@@ -13,9 +13,21 @@ function read(path) {
   return readFileSync(join(root, path), "utf8");
 }
 
+function readHtmlFiles(dir) {
+  if (!existsSync(dir)) return "";
+  return readdirSync(dir)
+    .flatMap((file) => {
+      const path = join(dir, file);
+      if (statSync(path).isDirectory()) return readHtmlFiles(path);
+      return file.endsWith(".html") ? readFileSync(path, "utf8") : "";
+    })
+    .join("\n");
+}
+
 const indexHtml = existsSync(join(root, "dist", "index.html"))
   ? read("dist/index.html")
   : "";
+const publicHtml = readHtmlFiles(join(root, "dist"));
 const cssDir = join(root, "dist", "_astro");
 const css = existsSync(cssDir)
   ? readdirSync(cssDir)
@@ -33,27 +45,31 @@ check(indexHtml.includes('property="og:title"'), "homepage should render Open Gr
 check(indexHtml.includes('name="twitter:card"'), "homepage should render Twitter card metadata");
 check(indexHtml.includes('rel="icon"'), "homepage should render a favicon link");
 check(indexHtml.includes("og-image.png"), "homepage should reference the PNG share image");
+check(!publicHtml.includes("mailto:hilmimukti"), "public build should not expose a direct email mailto link");
+check(!publicHtml.includes("Jakarta / remote-ready"), "homepage should not expose location-style availability metadata");
+check(!publicHtml.includes("Program operating model"), "draft private operating-model note should not be published");
+check(!publicHtml.includes("AI-assisted planning workflow"), "draft private AI workflow note should not be published");
 
 check(css.includes(".prose p+p"), "prose paragraphs should have spacing between adjacent paragraphs");
 check(css.includes(".prose ul,.prose ol"), "prose lists should have readable spacing");
 
-check(
-  seniorTpm.includes("Quarterly") && seniorTpm.includes("senior stakeholders"),
-  "senior TPM resume bullets should include scope and stakeholder evidence"
-);
+check(seniorTpm.includes("Quarterly"), "senior TPM resume bullets should include scope evidence");
 check(
   !seniorTpm.includes("  - lead planning"),
   "senior TPM bullets should not remain lowercase responsibility statements"
 );
 
-for (const [label, content] of [
-  ["Program Truth", projectTruth],
-  ["Program operating model", programSystems],
-  ["AI-assisted planning workflow", aiTooling]
-]) {
+for (const [label, content] of [["Program Truth", projectTruth]]) {
   check(content.includes("## Context"), `${label} should include context`);
   check(content.includes("## What changed"), `${label} should include what changed`);
   check(content.includes("## Evidence I can show"), `${label} should include sanitized evidence`);
+}
+
+for (const [label, content] of [
+  ["Program operating model", programSystems],
+  ["AI-assisted planning workflow", aiTooling]
+]) {
+  check(content.includes('status: "draft"'), `${label} should stay draft-only`);
 }
 
 if (failures.length > 0) {

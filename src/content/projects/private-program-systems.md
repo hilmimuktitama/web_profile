@@ -2,7 +2,7 @@
 title: "Program operating model"
 description: "A cleaned-up case note on bringing planning, blockers, owners, and stakeholder updates into one working rhythm."
 source: "manual"
-status: "private-case-study"
+status: "draft"
 updatedDate: 2026-05-12
 featured: false
 order: 20

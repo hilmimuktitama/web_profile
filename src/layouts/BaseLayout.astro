@@ -43,37 +43,31 @@ const shareImageUrl = new URL(withBase("/og-image.png"), site).toString();
   </head>
   <body>
     <div class="site-shell">
-      <aside class="identity-rail" aria-label="Profile summary">
-        <a class="rail-mark" href={withBase("/")} aria-label="Hilmi Muktitama home">HM</a>
-        <div class="rail-copy">
-          <span>Technical Program Manager</span>
-          <span>Program delivery and planning</span>
+      <header class="site-header">
+        <a class="brand" href={withBase("/")} aria-label="Hilmi Muktitama home">
+          <span class="brand-mark">HM</span>
+          <span>Hilmi Muktitama</span>
+        </a>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href={withBase("/resume/")}>Resume</a>
+          <a href={withBase("/#case-studies")}>Case Studies</a>
+          <a href={withBase("/articles/")}>Writing</a>
+          <a href={withBase("/#contact")}>Contact</a>
+        </nav>
+      </header>
+      <main>
+        <slot />
+      </main>
+      <footer class="site-footer" id="contact">
+        <div>
+          <p class="footer-title">Contact</p>
+          <p class="muted">Open to Technical Program Manager roles where delivery planning, risk visibility, and follow-through matter.</p>
         </div>
-      </aside>
-      <div class="site-frame">
-        <header class="site-header">
-          <a class="brand" href={withBase("/")} aria-label="Hilmi Muktitama home">Hilmi Muktitama</a>
-          <nav class="site-nav" aria-label="Primary navigation">
-            <a href={withBase("/resume/")}>Resume</a>
-            <a href={withBase("/#case-studies")}>Selected Work</a>
-            <a href={withBase("/articles/")}>Writing</a>
-            <a href={withBase("/#contact")}>Contact</a>
-          </nav>
-        </header>
-        <main>
-          <slot />
-        </main>
-        <footer class="site-footer" id="contact">
-          <div>
-            <p class="footer-title">Contact</p>
-            <p class="muted">Open to Technical Program Manager roles where delivery planning, risk visibility, and follow-through matter.</p>
-          </div>
-          <div class="footer-links" aria-label="Contact links">
-            <a href="https://www.linkedin.com/in/hilmimuktitama/">LinkedIn</a>
-            <a href="https://github.com/hilmimuktitama">GitHub</a>
-          </div>
-        </footer>
-      </div>
+        <div class="footer-links" aria-label="Contact links">
+          <a href="https://www.linkedin.com/in/hilmimuktitama/">LinkedIn</a>
+          <a href="https://github.com/hilmimuktitama">GitHub</a>
+        </div>
+      </footer>
     </div>
   </body>
 </html>

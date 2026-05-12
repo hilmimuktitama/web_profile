@@ -49,6 +49,10 @@ check(!publicHtml.includes("mailto:hilmimukti"), "public build should not expose
 check(!publicHtml.includes("Jakarta / remote-ready"), "homepage should not expose location-style availability metadata");
 check(!publicHtml.includes("Program operating model"), "draft private operating-model note should not be published");
 check(!publicHtml.includes("AI-assisted planning workflow"), "draft private AI workflow note should not be published");
+check(!publicHtml.includes("Private work can be discussed"), "public build should not use vague private-work filler copy");
+check(!publicHtml.includes("share-safe"), "public build should not use vague share-safe filler copy");
+check(!publicHtml.includes("work I can talk about"), "public build should not use casual work-disclosure filler copy");
+check(!publicHtml.includes("AI-assisted workflows"), "public build should not use broad AI-positioning filler copy");
 
 check(css.includes(".prose p+p"), "prose paragraphs should have spacing between adjacent paragraphs");
 check(css.includes(".prose ul,.prose ol"), "prose lists should have readable spacing");

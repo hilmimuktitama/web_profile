@@ -188,12 +188,14 @@ h3 {
 }
 
 .hero h1 {
-  max-width: 6.2ch;
   font-size: clamp(5.4rem, 7.8vw, 7.4rem);
   line-height: 0.83;
   font-weight: 850;
   letter-spacing: 0;
-  overflow-wrap: anywhere;
+}
+
+.hero h1 span {
+  display: block;
 }
 
 .hero-meta {
@@ -835,7 +837,6 @@ h3 {
   }
 
   .hero h1 {
-    max-width: 6.1ch;
     font-size: 4.7rem;
   }
 

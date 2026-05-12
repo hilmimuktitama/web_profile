@@ -15,9 +15,24 @@ tags:
   - evidence
 ---
 
-Program Truth is a documentation-first workflow for program operators who need to reconcile execution reality across multiple sources.
+## Context
 
-The project is built around a familiar TPM problem: the parent ticket says one thing, the task-level evidence says something messier. Program Truth separates facts, assumptions, open questions, blockers, owners, and dates so the update can survive a serious review.
+Program Truth is a documentation-first workflow for program operators who need to reconcile execution reality across Jira, Confluence, meeting notes, and local planning files.
+
+The familiar problem: the parent ticket says one thing, while task-level evidence shows something messier. A status update can look green because the summary is clean, not because the work is actually unblocked.
+
+## What changed
+
+- Split status work into facts, assumptions, blockers, owners, dates, and open questions.
+- Made the update traceable to source evidence instead of relying on memory or meeting narration.
+- Treated the parent-ticket story as a claim to verify, not the final truth.
+- Kept the output reviewable enough for leadership updates without exposing private project details.
+
+## Evidence I can show
+
+- Public repository structure and prompts for evidence-first program review.
+- Sanitized examples of how blockers, owners, and decisions are separated before a report is written.
+- A repeatable workflow that can be adapted to Jira and Confluence-heavy delivery environments.
 
 ## Why It Matters
 

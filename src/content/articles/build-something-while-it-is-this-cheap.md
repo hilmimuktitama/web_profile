@@ -1,6 +1,6 @@
 ---
 title: "Build Something While It Is This Cheap"
-description: "A personal note on why access to AI has made building less optional for anyone with the privilege to use it."
+description: "A personal essay on AI lowering the cost of starting, and why judgment still matters when turning ideas into working artifacts."
 pubDate: 2026-05-12
 tags:
   - building

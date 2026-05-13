@@ -1,6 +1,6 @@
 ---
 title: "Timeline Truth"
-description: "A local MCP server that turns messy planning notes into reviewable timeline artifacts with gaps, assumptions, and source references preserved."
+description: "A planning-quality workflow that turns rough timeline inputs into reviewable artifacts with missing dates, dependencies, assumptions, and source references visible."
 source: "github"
 status: "public"
 repoUrl: "https://github.com/hilmimuktitama/timeline-truth"
@@ -17,16 +17,16 @@ tags:
 
 ## Context
 
-Timeline Truth is a local MCP server for AI-agent TPM workflows. It takes rough planning inputs such as PRD snippets, Jira notes, CSV exports, launch checklists, and status updates, then turns them into normalized timeline artifacts.
+Timeline Truth starts from an operating problem: delivery timelines often look cleaner than the source inputs behind them. PRD snippets, Jira notes, CSV exports, launch checklists, and status updates can disagree on dates, owners, dependencies, and assumptions.
 
-The core constraint is deliberate: the tool should not invent missing dates, owners, or dependencies. It keeps source references, gaps, assumptions, and validation output visible so a human can review the timeline before using it in a plan or status update.
+The public implementation is a local MCP server, but the point is review discipline. The workflow keeps source references, gaps, assumptions, and validation output visible so a human can review timeline readiness before using it in a plan or status update.
 
 ## What changed
 
-- Compiled messy planning text into structured timeline JSON.
+- Turned messy planning inputs into structured timeline artifacts for review.
 - Preserved source references instead of flattening context into a confident summary.
 - Flagged missing dates, owners, dependency issues, and sequencing problems.
-- Rendered portable Mermaid and Markdown outputs for planning docs and status reports.
+- Produced Mermaid and Markdown outputs after validation, so timelines could move into planning docs and status reports.
 
 ## Evidence I can show
 

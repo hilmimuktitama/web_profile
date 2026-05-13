@@ -6,11 +6,11 @@ location: "Indonesia"
 period: "Feb 2022 - Jul 2024"
 summary: "Managed simultaneous technical projects from planning through delivery, keeping timelines, quality standards, risk tracking, and stakeholder communication coordinated."
 items:
-  - managed planning and execution for multiple technical projects in parallel
-  - worked with cross-functional teams to shape plans, milestones, and deliverables
-  - monitored development progress and translated delivery status for management
-  - tracked risks, surfaced blockers, and communicated status updates to stakeholders
-  - reviewed project performance and helped teams identify improvement areas
+  - Led planning and execution across parallel technical projects from scope alignment through delivery follow-up.
+  - Turned cross-functional input into milestones, owners, deliverables, and reviewable execution plans.
+  - Translated development progress, risks, and blockers into management-ready status updates.
+  - Kept delivery risks visible until blockers had owners, next actions, and stakeholder follow-up.
+  - Reviewed delivery patterns with teams and converted gaps into planning and coordination improvements.
 order: 20
 ---
 

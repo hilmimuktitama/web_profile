@@ -48,27 +48,6 @@ const formatProjectStatus = () => "public repo";
         <a class="button-link" href="https://www.linkedin.com/in/hilmimuktitama/">LinkedIn</a>
         <a class="button-link" href="https://github.com/hilmimuktitama">GitHub</a>
       </div>
-      <aside class="hero-panel" aria-label="Profile operating model">
-        <div>
-          <p class="panel-label">Operating model</p>
-          <div class="signal-list">
-            <p><span>01</span> Source evidence before summary confidence.</p>
-            <p><span>02</span> Owners, dates, blockers, and decisions stay visible.</p>
-            <p><span>03</span> Updates are written for review, not meeting memory.</p>
-          </div>
-        </div>
-        <div class="signal-strip" aria-label="Operating loop">
-          <span>Source</span>
-          <span>Synthesize</span>
-          <span>Review</span>
-          <span>Report</span>
-        </div>
-      </aside>
-      <div class="system-note" aria-label="Execution system proof points">
-        <p>Plans stay close to Jira, Confluence, docs, and owner follow-ups.</p>
-        <p>Risks are separated from assumptions before they reach stakeholders.</p>
-        <p>Reports stay compact enough to move decisions without extra ceremony.</p>
-      </div>
     </div>
   </section>
 
@@ -89,9 +68,9 @@ const formatProjectStatus = () => "public repo";
             {entry.data.organization && <p class="meta">{entry.data.organization}</p>}
             <p>{entry.data.summary}</p>
             {entry.data.items.length > 0 && (
-              <div class="tag-row">
-                {entry.data.items.slice(0, 3).map((item) => <span class="tag">{item}</span>)}
-              </div>
+              <ul class="evidence-list">
+                {entry.data.items.slice(0, 3).map((item) => <li>{item}</li>)}
+              </ul>
             )}
           </div>
         </article>

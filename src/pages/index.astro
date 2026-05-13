@@ -17,14 +17,10 @@ const articles = (await getCollection("articles"))
 
 const resumeEntries = (await getCollection("resume")).sort((a, b) => a.data.order - b.data.order);
 const experience = resumeEntries.filter((entry) => entry.data.section === "experience");
-const skills = resumeEntries.filter((entry) => entry.data.section === "skill");
 const highlightedExperience = experience.slice(0, 2);
-const coreSkill = skills[0];
 
 const formatDate = (date?: Date) =>
   date?.toLocaleDateString("en", { month: "short", year: "numeric" }) ?? "Ready for update";
-
-const formatProjectStatus = () => "public repo";
 ---
 
 <BaseLayout>
@@ -75,19 +71,14 @@ const formatProjectStatus = () => "public repo";
           </div>
         </article>
       ))}
-      {coreSkill && (
-        <article class="content-row">
-          <p class="meta">Resume</p>
-          <div>
-            <h3>Full work history</h3>
-            <p>The dedicated resume page includes selected experience, education, skills, language, and certifications from the public profile source.</p>
-            <div class="tag-row">
-              {coreSkill.data.items.map((item) => <span class="tag">{item}</span>)}
-            </div>
-            <p class="inline-action"><a href={withBase("/resume/")}>Read full resume</a></p>
-          </div>
-        </article>
-      )}
+      <article class="content-row">
+        <p class="meta">Resume</p>
+        <div>
+          <h3>Full work history</h3>
+          <p>The dedicated resume page includes selected experience, education, skills, language, and certifications from the public profile source.</p>
+          <p class="inline-action"><a href={withBase("/resume/")}>Read full resume</a></p>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -106,10 +97,6 @@ const formatProjectStatus = () => "public repo";
             <a class="project-title" href={project.data.repoUrl ?? withBase(`/work/${project.slug}/`)}>
               {project.data.title}
             </a>
-            <div class="tag-row">
-              <span class="tag">{formatProjectStatus()}</span>
-              {project.data.language && <span class="tag">{project.data.language}</span>}
-            </div>
           </div>
           <p class="project-desc">{project.data.description}</p>
           <div class="project-actions">

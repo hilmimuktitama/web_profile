@@ -1,7 +1,7 @@
 ---
 section: "language"
 title: "English"
-summary: "Professional Working"
+summary: "Professional working proficiency."
 items: []
 order: 80
 ---

@@ -3,14 +3,13 @@ section: "experience"
 title: "Product Manager"
 organization: "Privy"
 period: "Nov 2020 - Feb 2022"
-summary: "Owned a core product system used by multiple product surfaces, translating needs from several sources into product direction, backlog priorities, and development-cycle coordination."
+summary: "Owned a shared product system used across multiple product surfaces, balancing stakeholder needs, backlog priorities, and delivery tradeoffs for cross-functional teams."
 items:
-  - managed a core product system consumed by multiple products
-  - owned product and team performance for the assigned area
-  - translated product needs from multiple inputs into actionable work
-  - served as a product-knowledge reference for stakeholders and teams
-  - defined and prioritized product backlogs
-  - monitored the development cycle and synchronized with cross-functional teams
+  - Owned roadmap and backlog decisions for a core product system used by multiple product surfaces.
+  - Translated stakeholder, product, and team input into prioritized product work.
+  - Balanced product quality, delivery timing, and integration needs when shaping backlog priorities.
+  - Served as the product reference for stakeholders who needed clarity on system behavior, constraints, and planned changes.
+  - Coordinated development-cycle follow-through with engineering and cross-functional partners.
 order: 30
 ---
 

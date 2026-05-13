@@ -7,7 +7,6 @@ const experience = entries.filter((entry) => entry.data.section === "experience"
 const skills = entries.filter((entry) => entry.data.section === "skill");
 const education = entries.filter((entry) => entry.data.section === "education");
 const languages = entries.filter((entry) => entry.data.section === "language");
-const certifications = entries.filter((entry) => entry.data.section === "certification");
 ---
 
 <BaseLayout
@@ -60,7 +59,7 @@ const certifications = entries.filter((entry) => entry.data.section === "certifi
     <section class="resume-section resume-grid-section" aria-labelledby="credentials-title">
       <div class="resume-section-heading">
         <p class="eyebrow">Credentials</p>
-        <h2 id="credentials-title">Skills, education, language, and certifications</h2>
+        <h2 id="credentials-title">Skills, education, and language</h2>
       </div>
       <div class="resume-grid">
         <section class="resume-card" aria-labelledby="skills-title">
@@ -94,13 +93,6 @@ const certifications = entries.filter((entry) => entry.data.section === "certifi
               <p>{entry.data.summary}</p>
             </div>
           ))}
-        </section>
-
-        <section class="resume-card" aria-labelledby="certifications-title">
-          <h3 id="certifications-title">Certifications</h3>
-          <ul class="credential-list">
-            {certifications.map((entry) => <li>{entry.data.title}</li>)}
-          </ul>
         </section>
       </div>
     </section>

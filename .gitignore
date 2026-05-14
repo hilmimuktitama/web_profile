@@ -6,3 +6,8 @@ dist/
 !.env.example
 .superpowers/
 npm-debug.log*
+
+# Local verification artifacts
+.astro-*.log
+.gh-auth-login.*.log
+.qa-*.png

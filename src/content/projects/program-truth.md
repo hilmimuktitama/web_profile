@@ -5,7 +5,7 @@ source: "github"
 status: "public"
 repoUrl: "https://github.com/hilmimuktitama/program-truth"
 language: "Python"
-updatedDate: 2026-05-09
+updatedDate: 2026-05-11
 featured: true
 order: 10
 tags:
@@ -32,6 +32,7 @@ The familiar problem: the parent ticket says one thing, while task-level evidenc
 
 - Public repository structure and prompts for evidence-first program review.
 - Sanitized examples of how blockers, owners, and decisions are separated before a report is written.
+- Npm installer and doctor flow for setting up the skill in local agent environments.
 - A repeatable workflow that can be adapted to Jira and Confluence-heavy delivery environments.
 
 ## Why It Matters

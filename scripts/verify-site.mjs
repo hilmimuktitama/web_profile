@@ -37,6 +37,7 @@ const css = existsSync(cssDir)
   : "";
 const seniorTpm = read("src/content/resume/mekari-senior-technical-program-manager.md");
 const projectTruth = read("src/content/projects/program-truth.md");
+const captureTruth = read("src/content/projects/capture-truth.md");
 const programSystems = read("src/content/projects/private-program-systems.md");
 const aiTooling = read("src/content/projects/private-ai-delivery-tooling.md");
 
@@ -55,6 +56,7 @@ check(!publicHtml.includes("share-safe"), "public build should not use vague sha
 check(!publicHtml.includes("work I can talk about"), "public build should not use casual work-disclosure filler copy");
 check(!publicHtml.includes("AI-assisted workflows"), "public build should not use broad AI-positioning filler copy");
 check(!publicHtml.includes("Additional work samples are available on request"), "public build should not use generic work-sample availability filler copy");
+check(publicHtml.includes("Capture Truth"), "public build should render Capture Truth project content");
 
 check(css.includes(".prose p+p"), "prose paragraphs should have spacing between adjacent paragraphs");
 check(css.includes(".prose ul,.prose ol"), "prose lists should have readable spacing");
@@ -65,11 +67,23 @@ check(
   "senior TPM bullets should not remain lowercase responsibility statements"
 );
 
-for (const [label, content] of [["Program Truth", projectTruth]]) {
+for (const [label, content] of [
+  ["Program Truth", projectTruth],
+  ["Capture Truth", captureTruth]
+]) {
   check(content.includes("## Context"), `${label} should include context`);
   check(content.includes("## What changed"), `${label} should include what changed`);
   check(content.includes("## Evidence I can show"), `${label} should include sanitized evidence`);
 }
+
+check(
+  captureTruth.includes("https://github.com/hilmimuktitama/capture-truth"),
+  "Capture Truth should link to the public repository"
+);
+check(
+  captureTruth.includes("evidence_pack"),
+  "Capture Truth should explain the evidence pack artifact"
+);
 
 for (const [label, content] of [
   ["Program operating model", programSystems],

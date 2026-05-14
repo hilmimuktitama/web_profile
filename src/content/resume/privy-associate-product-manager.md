@@ -1,16 +1,14 @@
 ---
 section: "experience"
 title: "Associate Product Manager"
-organization: "Privy"
+organization: "PT Privy Identitas Digital (PrivyID)"
 location: "Yogyakarta, Indonesia"
-period: "Apr 2020 - Nov 2020"
-summary: "Supported product delivery by turning stakeholder needs into backlogs, coordinating with development teams, monitoring tasks, and helping clients through integration procedures."
+period: "Mar 2020 - Nov 2020"
+summary: "Supported product delivery across multiple projects by translating business requirements into product backlogs and guiding client integration work."
 items:
-  - worked with stakeholders to clarify product requirements
-  - partnered with development teams to improve product quality
-  - converted stakeholder needs across projects and products into backlogs
-  - defined and monitored development-cycle tasks
-  - supported clients during integration procedures
+  - Worked closely with stakeholders to translate business requirements into product backlogs across multiple projects.
+  - Supported 20+ client API integrations, guiding external teams through technical onboarding and integration procedures.
+  - Defined and monitored development tasks within the sprint cycle, ensuring delivery aligned with product goals.
 order: 40
 ---
 

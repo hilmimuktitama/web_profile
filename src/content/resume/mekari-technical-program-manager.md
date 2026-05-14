@@ -1,16 +1,15 @@
 ---
 section: "experience"
 title: "Technical Program Manager"
-organization: "Mekari"
+organization: "PT Mid Solusi Nusantara (Mekari)"
 location: "Indonesia"
 period: "Feb 2022 - Jul 2024"
-summary: "Managed simultaneous technical projects from planning through delivery, keeping timelines, quality standards, risk tracking, and stakeholder communication coordinated."
+summary: "Managed planning and execution of multiple concurrent technical programs across engineering squads, keeping delivery timelines, quality standards, and stakeholder communication coordinated."
 items:
-  - Led planning and execution across parallel technical projects from scope alignment through delivery follow-up.
-  - Turned cross-functional input into milestones, owners, deliverables, and reviewable execution plans.
-  - Translated development progress, risks, and blockers into management-ready status updates.
-  - Kept delivery risks visible until blockers had owners, next actions, and stakeholder follow-up.
-  - Reviewed delivery patterns with teams and converted gaps into planning and coordination improvements.
+  - Designed and implemented SDLC automation tools using Apps Script and AppSheet, replacing manual workflows across sprint ceremonies, release tracking, and status reporting.
+  - Established automation tooling as a new standard adopted across the engineering organization.
+  - Established program management practices for cross-squad dependency tracking, weekly sync cadences, and structured risk escalation.
+  - Coordinated sprint ceremonies, release planning, and stakeholder communications across product, engineering, and QA teams.
 order: 20
 ---
 

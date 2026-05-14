@@ -6,12 +6,12 @@ const entries = (await getCollection("resume")).sort((a, b) => a.data.order - b.
 const experience = entries.filter((entry) => entry.data.section === "experience");
 const skills = entries.filter((entry) => entry.data.section === "skill");
 const education = entries.filter((entry) => entry.data.section === "education");
-const languages = entries.filter((entry) => entry.data.section === "language");
+const certifications = entries.filter((entry) => entry.data.section === "certification");
 ---
 
 <BaseLayout
   title="Resume"
-  description="Resume for Hilmi Muktitama, Senior Technical Program Manager with experience across program management, product management, and QA engineering."
+  description="Resume for Hilmi Muktitama, Senior Technical Program Manager at Mekari with experience across program management, product management, QA engineering, automation, and AI-augmented TPM workflows."
 >
   <article class="resume-page">
     <header class="resume-hero">
@@ -20,7 +20,7 @@ const languages = entries.filter((entry) => entry.data.section === "language");
         <h1>Hilmi Muktitama</h1>
         <p class="role-title">Senior Technical Program Manager</p>
         <p class="lede">
-          Senior TPM with 5+ years across QA, product, and program leadership, focused on delivery planning, risk visibility, and cross-functional execution.
+          Senior TPM at Mekari with 5+ years across program management, product management, and QA engineering, currently leading cross-squad CRM omnichannel and AI-powered product programs.
         </p>
         <div class="resume-contact" aria-label="Public resume contact links">
           <a href="https://www.linkedin.com/in/hilmimuktitama/">LinkedIn</a>
@@ -59,7 +59,7 @@ const languages = entries.filter((entry) => entry.data.section === "language");
     <section class="resume-section resume-grid-section" aria-labelledby="credentials-title">
       <div class="resume-section-heading">
         <p class="eyebrow">Credentials</p>
-        <h2 id="credentials-title">Skills, education, and language</h2>
+        <h2 id="credentials-title">Skills, education, and certifications</h2>
       </div>
       <div class="resume-grid">
         <section class="resume-card" aria-labelledby="skills-title">
@@ -81,16 +81,27 @@ const languages = entries.filter((entry) => entry.data.section === "language");
               <p class="credential-title">{entry.data.title}</p>
               {entry.data.organization && <p>{entry.data.organization}</p>}
               {entry.data.period && <p class="meta">{entry.data.period}</p>}
+              <p>{entry.data.summary}</p>
+              {entry.data.items.length > 0 && (
+                <ul class="credential-list">
+                  {entry.data.items.map((item) => <li>{item}</li>)}
+                </ul>
+              )}
             </div>
           ))}
         </section>
 
-        <section class="resume-card" aria-labelledby="language-title">
-          <h3 id="language-title">Language</h3>
-          {languages.map((entry) => (
+        <section class="resume-card" aria-labelledby="certifications-title">
+          <h3 id="certifications-title">Certifications</h3>
+          {certifications.map((entry) => (
             <div class="credential-item">
               <p class="credential-title">{entry.data.title}</p>
-              <p>{entry.data.summary}</p>
+              {entry.data.summary && <p>{entry.data.summary}</p>}
+              {entry.data.items.length > 0 && (
+                <ul class="credential-list">
+                  {entry.data.items.map((item) => <li>{item}</li>)}
+                </ul>
+              )}
             </div>
           ))}
         </section>

@@ -1,11 +1,17 @@
 ---
 section: "skill"
 title: "Core skills"
-summary: "Program and delivery skills from the source profile, focused on software execution environments."
+summary: "Program, product, and technical delivery skills from the latest resume source."
 items:
-  - Agile
-  - IT Project & Program Management
-  - Software Development Life Cycle (SDLC)
+  - Cross-functional Program Management
+  - Stakeholder Communication
+  - "Risk Management & Escalation"
+  - Agile/Scrum
+  - SDLC
+  - Product Management
+  - Software Testing
+  - SQL
+  - REST API
 order: 60
 ---
 

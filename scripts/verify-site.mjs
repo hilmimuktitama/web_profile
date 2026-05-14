@@ -45,6 +45,7 @@ check(indexHtml.includes('property="og:title"'), "homepage should render Open Gr
 check(indexHtml.includes('name="twitter:card"'), "homepage should render Twitter card metadata");
 check(indexHtml.includes('rel="icon"'), "homepage should render a favicon link");
 check(indexHtml.includes("og-image.png"), "homepage should reference the PNG share image");
+check(indexHtml.includes("View full resume"), "homepage resume preview should link to the full resume page");
 check(!publicHtml.includes("mailto:hilmimukti"), "public build should not expose a direct email mailto link");
 check(!publicHtml.includes("Jakarta / remote-ready"), "homepage should not expose location-style availability metadata");
 check(!publicHtml.includes("Program operating model"), "draft private operating-model note should not be published");

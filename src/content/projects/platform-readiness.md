@@ -2,7 +2,7 @@
 title: "Platform Readiness Program"
 description: "A sanitized case note on coordinating B2B SaaS platform readiness across cross-squad release gates."
 source: "manual"
-status: "public"
+status: "private-case-study"
 updatedDate: 2026-05-14
 featured: true
 order: 8
